@@ -22,6 +22,7 @@
 		F21A38822B4E1C1700ADB488 /* ItemDisplaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21A38812B4E1C1700ADB488 /* ItemDisplaying.swift */; };
 		F21A38842B5187DE00ADB488 /* SearchScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21A38832B5187DE00ADB488 /* SearchScope.swift */; };
 		F21A38A82B58241C00ADB488 /* StoreItemTableViewDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21A38A72B58241C00ADB488 /* StoreItemTableViewDiffableDataSource.swift */; };
+		F26290422B582B71006E0B47 /* StoreItemCollectionViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26290412B582B71006E0B47 /* StoreItemCollectionViewSectionHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		F21A38812B4E1C1700ADB488 /* ItemDisplaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDisplaying.swift; sourceTree = "<group>"; };
 		F21A38832B5187DE00ADB488 /* SearchScope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScope.swift; sourceTree = "<group>"; };
 		F21A38A72B58241C00ADB488 /* StoreItemTableViewDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItemTableViewDiffableDataSource.swift; sourceTree = "<group>"; };
+		F26290412B582B71006E0B47 /* StoreItemCollectionViewSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItemCollectionViewSectionHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,6 @@
 		18A6051023CF9802002037CA = {
 			isa = PBXGroup;
 			children = (
-				F21A38A72B58241C00ADB488 /* StoreItemTableViewDiffableDataSource.swift */,
 				18A6051B23CF9802002037CA /* iTunesSearch */,
 				18A6051A23CF9802002037CA /* Products */,
 			);
@@ -87,6 +88,8 @@
 				1812E9A023F35901009BBFA7 /* StoreItemContainerViewController.swift */,
 				F21A38832B5187DE00ADB488 /* SearchScope.swift */,
 				F21A38812B4E1C1700ADB488 /* ItemDisplaying.swift */,
+				F26290412B582B71006E0B47 /* StoreItemCollectionViewSectionHeader.swift */,
+				F21A38A72B58241C00ADB488 /* StoreItemTableViewDiffableDataSource.swift */,
 				18A6052523CF9803002037CA /* Assets.xcassets */,
 				18A6052723CF9803002037CA /* LaunchScreen.storyboard */,
 				18A6052223CF9802002037CA /* Main.storyboard */,
@@ -170,6 +173,7 @@
 				18A6053523CFABBB002037CA /* StoreItem.swift in Sources */,
 				F21A38802B4DEF3F00ADB488 /* ItemCollectionViewCell.swift in Sources */,
 				F21A38822B4E1C1700ADB488 /* ItemDisplaying.swift in Sources */,
+				F26290422B582B71006E0B47 /* StoreItemCollectionViewSectionHeader.swift in Sources */,
 				18A6053723CFABDC002037CA /* StoreItemController.swift in Sources */,
 				18A6053123CF9829002037CA /* StoreItemListTableViewController.swift in Sources */,
 				F21A38A82B58241C00ADB488 /* StoreItemTableViewDiffableDataSource.swift in Sources */,

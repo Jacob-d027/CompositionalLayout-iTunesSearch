@@ -9,6 +9,7 @@ class StoreItemContainerViewController: UIViewController, UISearchResultsUpdatin
     let searchController = UISearchController()
     let storeItemController = StoreItemController()
     
+    weak var collectionViewController: StoreItemCollectionViewController?
     var collectionViewDataSource: UICollectionViewDiffableDataSource<String, StoreItem>!
     
     var tableViewDataSource: StoreItemTableViewDiffableDataSource!
@@ -62,6 +63,14 @@ class StoreItemContainerViewController: UIViewController, UISearchResultsUpdatin
     
     func configureCollectionViewDataSource(_ collectionView: UICollectionView) {
         collectionViewDataSource = UICollectionViewDiffableDataSource<String, StoreItem>(collectionView: collectionView, cellProvider: { collectionView, indexPath, item in
+            self.collectionViewDataSource.supplementaryViewProvider = { collectionView, kind, indexPath -> UICollectionReusableView? in
+                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: "Header", withReuseIdentifier: StoreItemCollectionViewSectionHeader.reuseIdentifier, for: indexPath) as! StoreItemCollectionViewSectionHeader
+                
+                let title = self.itemsSnapshot.sectionIdentifiers[indexPath.section]
+                headerView.setTitle(title)
+                
+                return headerView
+            }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Item", for: indexPath) as! ItemCollectionViewCell
             
             self.collectionViewImageLoadTasks[indexPath]?.cancel()
@@ -100,6 +109,8 @@ class StoreItemContainerViewController: UIViewController, UISearchResultsUpdatin
         let currentSnapshotItems = itemsSnapshot.itemIdentifiers
         let updatedSnapshot = createSectionedSnapshot(from: currentSnapshotItems + items)
         itemsSnapshot = updatedSnapshot
+        
+        collectionViewController?.configureCollectionViewLayout(for: selectedSearchScope)
         
         await tableViewDataSource.apply(itemsSnapshot, animatingDifferences: true)
         await collectionViewDataSource.apply(itemsSnapshot)
@@ -151,12 +162,12 @@ class StoreItemContainerViewController: UIViewController, UISearchResultsUpdatin
             if !searchTerm.isEmpty {
                 
                 // set up query dictionary
-                let query = [
-                    "term": searchTerm,
-                    "media": mediaType,
-                    "lang": "en_us",
-                    "limit": "20"
-                ]
+//                let query = [
+//                    "term": searchTerm,
+//                    "media": mediaType,
+//                    "lang": "en_us",
+//                    "limit": "20"
+//                ]
                 
                 // use the item controller to fetch items
                 do {
@@ -185,7 +196,10 @@ class StoreItemContainerViewController: UIViewController, UISearchResultsUpdatin
             configureTableViewDataSource(tableViewController.tableView)
         } 
         if let collectionViewController = segue.destination as? StoreItemCollectionViewController {
+            collectionViewController.configureCollectionViewLayout(for: selectedSearchScope)
             configureCollectionViewDataSource(collectionViewController.collectionView)
+            
+            self.collectionViewController = collectionViewController
         }
     }
     
